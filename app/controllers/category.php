@@ -27,6 +27,30 @@ class category extends Dcontroller{
     $this->load->view('footer');
   }
 
+  public function insertcategory(){
+    $categorymodel = $this->load->model('categorymodel'); 
+
+    // $id = 2 ;
+    $table_category_product = 'tbl_category_product';
+
+    $data = array(
+      'title_category_product' => 'Laptop',
+      'desc_category_product' => 'MacBook M3 256GB 4GB', 
+    );
+    $categorymodel->insertcategory($table_category_product, $data);
+    
+  }
+  public function add_category(){
+
+  }
+  public function update_category(){
+
+  }
+  public function delete_category(){
+
+  }
+
+
 }
 
 ?>
