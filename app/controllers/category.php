@@ -38,7 +38,7 @@ class category extends Dcontroller{
       'desc_category_product' => 'MacBook M3 256GB 4GB', 
     );
     $categorymodel->insertcategory($table_category_product, $data);
-    
+    echo 'Insert data success';
   }
   public function add_category(){
 
