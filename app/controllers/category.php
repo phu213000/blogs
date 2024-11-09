@@ -1,9 +1,9 @@
 <?php
 class category extends Dcontroller{
-  public $load;
   
   public function __construct(){
       $data =array();
+      $message = array();
       parent::__construct();
       $this->load = new Load(); // Khởi tạo Load
   }
@@ -33,15 +33,26 @@ class category extends Dcontroller{
     // $id = 2 ;
     $table_category_product = 'tbl_category_product';
 
+    $title = $_POST['title_category_product'];
+    $desc = $_POST['desc_category_product'];
+
     $data = array(
-      'title_category_product' => 'Laptop',
-      'desc_category_product' => 'MacBook M3 256GB 4GB', 
+      'title_category_product' => $title,
+      'desc_category_product' => $desc
     );
-    $categorymodel->insertcategory($table_category_product, $data);
-    echo 'Insert data success';
+    
+    $resutl = $categorymodel->insertcategory($table_category_product, $data);
+    if($resutl == 1){
+      $message['msg'] = "Thêm dữ liệu thành công";
+    }else{
+      $message['msg'] = "Thêm dữ liệu thất bại";
+    }
+    $this->load->view('add_category', $message);
   }
   public function add_category(){
-
+    $this->load->view('header');
+    $this->load->view('add_category');
+    $this->load->view('footer');
   }
   public function update_category(){
 
