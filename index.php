@@ -13,12 +13,9 @@
     spl_autoload_register(function($class_name){
       include 'system/libs/'.$class_name.'.php';
     });
-    
-    // include_once('app/controllers/PostController.php');
-    
-    // // $main = new Main();
-    
-    // $post = new PostController();
+
+    include 'app/config/config.php';
+
 
       $url = isset($_GET['url']) ? $_GET['url'] : NULL;   
       

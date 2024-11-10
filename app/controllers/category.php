@@ -47,15 +47,15 @@ class category extends Dcontroller{
     }else{
       $message['msg'] = "Thêm dữ liệu thất bại";
     }
-    $this->load->view('add_category', $message);
+    $this->load->view('addcategory', $message);
   }
-  public function add_category(){
+  public function addcategory(){
     $this->load->view('header');
-    $this->load->view('add_category');
+    $this->load->view('addcategory');
     $this->load->view('footer');
   }
   
-  public function update_category(){
+  public function updatecategory(){
     $categorymodel = $this->load->model('categorymodel'); 
     $table_category_product = 'tbl_category_product';
     $id = 2;
@@ -73,7 +73,7 @@ class category extends Dcontroller{
       echo "Cập nhật dữ liệu thất bại";
     }
   }
-  public function delete_category(){
+  public function deletecategory(){
     $categorymodel = $this->load->model('categorymodel'); 
     $table_category_product = 'tbl_category_product';
     $cond = "id_category_product = 2";
