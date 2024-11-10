@@ -7,5 +7,7 @@ class Dmodel{
     $password = 'root';
     $this->db = new Database($connect, $user, $password);
   }
+
+  
 }
 ?>

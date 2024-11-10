@@ -5,5 +5,6 @@ class Dcontroller{
     $this->load = new Load();
   }
   
+  
 }
 ?>

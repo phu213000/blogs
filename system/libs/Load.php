@@ -13,4 +13,6 @@ class Load{
     include "app/models/{$fileName}.php";
     return new $fileName();
   }
+
+  
 }
