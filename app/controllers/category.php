@@ -54,14 +54,37 @@ class category extends Dcontroller{
     $this->load->view('add_category');
     $this->load->view('footer');
   }
+  
   public function update_category(){
-
+    $categorymodel = $this->load->model('categorymodel'); 
+    $table_category_product = 'tbl_category_product';
+    $id = 2;
+    // $title = 'Danh mục sản phẩm 2';
+    // $desc = 'Mo ta sản phẩm 2';
+    $cond = "id_category_product = $id";
+    $data = array(
+      'title_category_product' => 'Laptop',
+      'desc_category_product' => 'Laptop ASUS Zell 2021',
+    );
+    $resutl = $categorymodel->updatecategory($table_category_product, $data, $cond);
+    if($resutl == 1){
+      echo "Cập nhật dữ liệu thành công";
+    }else{
+      echo "Cập nhật dữ liệu thất bại";
+    }
   }
   public function delete_category(){
-
+    $categorymodel = $this->load->model('categorymodel'); 
+    $table_category_product = 'tbl_category_product';
+    $cond = "id_category_product = 2";
+    $resutl = $categorymodel->deletecategory($table_category_product, $cond);
+    if($resutl == 1){
+      echo "Xóa dữ liệu thành công";
+    }else{
+      echo "Xóa dữ liệu thất bại";
+    }
   }
-
-
+  
 }
 
 ?>

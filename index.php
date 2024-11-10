@@ -10,11 +10,10 @@
 <body>
   <h1>
     <?php  
-    include('system/libs/main.php');
-    include('system/libs/Dcontroller.php');
-    include('system/libs/Database.php');
-    include('system/libs/Dmodel.php');
-    include('system/libs/Load.php');
+    spl_autoload_register(function($class_name){
+      include 'system/libs/'.$class_name.'.php';
+    });
+    
     // include_once('app/controllers/PostController.php');
     
     // // $main = new Main();
