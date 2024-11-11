@@ -1,5 +1,6 @@
 <?php
 class Load{
+
   public function __construct(){
     // Constructor code here if needed
   }
