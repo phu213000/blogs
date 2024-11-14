@@ -49,13 +49,13 @@ class Database extends PDO
     return $this->exec($sql);
   }
 
-  public function affectedRows($sql,$username,$password){
+  public function affectedRows($sql, $username, $password){
     $statement = $this->prepare($sql);
-    $statement->execute(array(':username' => $username, ':password' => $password));
-    return $statement->rowCount();
+    $statement->execute(array($username, $password));
+    echo  $statement->rowCount();
   }
 
-  public function selectUser($sql,$username,$password){
+/++  public function selectUser($sql,$username,$password){
     $statement = $this->prepare($sql);
     $statement->execute(array(':username' => $username, ':password' => $password));
     return $statement->fetchAll();
@@ -120,6 +120,33 @@ class Database extends PDO
     $statement->execute(array(':token' => $token, ':email' => $email, ':time' => $time, ':status' => $status, ':password' => $password, ':username' => $username));
     return $statement->fetchAll();
   }
+
+
+  public function selectUserByTokenEmailTimeStatusPasswordUsernameEmail($sql,$token,$email,$time,$status,$password,$username,$email){
+    $statement = $this->prepare($sql);
+    $statement->execute(array(':token' => $token, ':email' => $email, ':time' => $time, ':status' => $status, ':password' => $password, ':username' => $username, ':email' => $email));
+    return $statement->fetchAll();
+  }
+
+  public function selectUserByTokenEmailTimeStatusPasswordUsernameEmailPhone($sql,$token,$email,$time,$status,$password,$username,$email,$phone){
+    $statement = $this->prepare($sql);
+    $statement->execute(array(':token' => $token, ':email' => $email, ':time' => $time, ':status' => $status, ':password' => $password, ':username' => $username, ':email' => $email, ':phone' => $phone));
+    return $statement->fetchAll();
+  }
+
+  public function selectUserByTokenEmailTimeStatusPasswordUsernameEmailPhoneAddress($sql,$token,$email,$time,$status,$password,$username,$email,$phone,$address){
+    $statement = $this->prepare($sql);
+    $statement->execute(array(':token' => $token, ':email' => $email, ':time' => $time, ':status' => $status, ':password' => $password, ':username' => $username, ':email' => $email, ':phone' => $phone, ':address' => $address));
+    return $statement->fetchAll();
+  }
+  
+  public function selectUserByTokenEmailTimeStatusPasswordUsernameEmailPhoneAddressFullname($sql,$token,$email,$time,$status,$password,$username,$email,$phone,$address,$fullname){
+    $statement = $this->prepare($sql);
+    $statement->execute(array(':token' => $token, ':email' => $email, ':time' => $time, ':status' => $status, ':password' => $password, ':username' => $username, ':email' => $email, ':phone' => $phone, ':address' => $address, ':fullname' => $fullname));
+    return $statement->fetchAll();
+  }
+
+  
 
   
 }

@@ -17,44 +17,71 @@ class Main
     // Lấy URL từ request
     public function getUrl()
     {
-        $this->url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : null;
-        $this->url = $this->url ? explode('/', filter_var($this->url, FILTER_SANITIZE_URL)) : [];
+        $url = isset($_GET['url']) ? $_GET['url'] : NULL;
+        if ($url != NULL) {
+            $url = rtrim($url, '/');
+            $url = filter_var($url, FILTER_SANITIZE_URL);
+            $url = explode('/', $url);
+            $this->url = $url;
+        } else {
+            unset($this->url);
+        }
     }
 
     // Tải controller tương ứng
     public function loadController()
     {
-        $this->controllerName = isset($this->url[0]) ? $this->url[0] : $this->controllerName;
-        $fileName = $this->controllerPath . $this->controllerName . '.php';
+        if (isset($this->url[0])) {
+            $this->controllerName = $this->url[0];
+            $fileName = $this->controllerPath . $this->controllerName . ".php";
 
-        if (file_exists($fileName)) {
-            include $fileName;
-            if (class_exists($this->controllerName)) {
-                $this->controller = new $this->controllerName();
-                return;
+            if (file_exists($fileName)) {
+                include $fileName;
+                
+                if (class_exists($this->controllerName)) {
+                    $this->controller = new $this->controllerName;
+                } else {
+                    header("Location: " . BASE_URL . "/index/notfound");
+                    exit;
+                }
+            } else {
+                header("Location: " . BASE_URL . "/index/notfound");
+                exit;
             }
+        } else {
+            include $this->controllerPath . $this->controllerName . ".php";
+            $this->controller = new $this->controllerName;
         }
-        $this->redirectNotFound();
     }
 
     // Gọi method của controller
     public function callMethod()
     {
-        $this->methodName = isset($this->url[1]) ? $this->url[1] : $this->methodName;
-        $params = array_slice($this->url, 2);
-
-        if (method_exists($this->controller, $this->methodName)) {
-            call_user_func_array([$this->controller, $this->methodName], $params);
+        if (isset($this->url[1])) {
+            $this->methodName = $this->url[1];
+            if (isset($this->url[2])) {
+                if (method_exists($this->controller, $this->methodName)) {
+                    $this->controller->{$this->methodName}($this->url[2]);
+                } else {
+                    header("Location: " . BASE_URL . "/index/notfound");
+                    exit;
+                }
+            } else {
+                if (method_exists($this->controller, $this->methodName)) {
+                    $this->controller->{$this->methodName}();
+                } else {
+                    header("Location: " . BASE_URL . "/index/notfound");
+                    exit;
+                }
+            }
         } else {
-            $this->redirectNotFound();
+            if (method_exists($this->controller, $this->methodName)) {
+                $this->controller->{$this->methodName}();
+            } else {
+                header("Location: " . BASE_URL . "/index/notfound");
+                exit;
+            }
         }
-    }
-
-    // Chuyển hướng đến trang không tìm thấy
-    private function redirectNotFound()
-    {
-        header("Location: " . BASE_URL . "/index/notfound");
-        exit();
     }
 }
 ?>
