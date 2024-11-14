@@ -3,6 +3,7 @@ class login extends Dcontroller {
   public $load;
   
   public function __construct() {
+      $message = array();
       // $message = array();
       $data = array();
       parent::__construct();
@@ -21,7 +22,7 @@ class login extends Dcontroller {
 
   public function dashboard() {
     // Session::checkSession();
-    echo "Welcome to Dashboard";
+    echo 'Trang dashboard';
   }
   public function authentication_login(){
     $username = $_POST['username'];
@@ -34,17 +35,15 @@ class login extends Dcontroller {
 
     // $count = $loginmodel->login($table_admin, $username, $password);
 
-
+    if($count == 0) {
+      
+      header("Location:".BASE_URL."/login");
+    } 
+    else {
+      header("Location:".BASE_URL."/login/dashboard");
+    }
     
-    // switch ($count) {
-    //     case 0:
-    //         header("Location:".BASE_URL."/login");
-    //         exit;
-    //     default:
-    //         header("Location:".BASE_URL."/login/dashboard");
-    //         exit;
-    // }
-  
+    
   }
 
   // public function logout(){
