@@ -16,13 +16,22 @@ class login extends Dcontroller {
 
   public function login() {
     $this->load->view('header');
+    Session::init();
+    if(Session::get('login') == true){
+      header("Location:".BASE_URL."/login/dashboard");
+    }
     $this->load->view('cpanel/login');
     $this->load->view('footer');
   }
 
   public function dashboard() {
+    
+    Session::checkSession();
     // Session::checkSession();
-    echo 'Trang dashboard';
+    $this->load->view('header');
+    $this->load->view('cpanel/dashboard');
+    $this->load->view('footer');
+    
   }
   public function authentication_login(){
     $username = $_POST['username'];
@@ -36,20 +45,27 @@ class login extends Dcontroller {
     // $count = $loginmodel->login($table_admin, $username, $password);
 
     if($count == 0) {
-      
+
+      $message['msg'] = 'Tài khoản hoặc mật khẩu không đúng';
       header("Location:".BASE_URL."/login");
     } 
     else {
+
+      $result = $loginmodel->getLogin($table_admin, $username, $password);
+
+      Session::init();
+      Session::set('login', true);
+      Session::set('username', $result[0]['username']);
+      Session::set('admin_id', $result[0]['id']);
       header("Location:".BASE_URL."/login/dashboard");
     }
-    
-    
+
   }
 
-  // public function logout(){
-  //   Session::init();
-  //   Session::destroy();
-  //   header('Location:'.BASE_URL.'/login/dashboard');
-  // }
+  public function logout(){
+    Session::init();
+    Session::destroy();
+    header('Location:'.BASE_URL.'/login');
+  }
 }
 ?>

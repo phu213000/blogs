@@ -54,4 +54,11 @@ class Database extends PDO
     $statement->execute(array($username, $password));
     return $statement ->rowCount();
   }
+
+  public function selectUser($sql, $username, $password){
+    $statement = $this->prepare($sql);
+    $statement->execute(array($username, $password));
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  
 }
