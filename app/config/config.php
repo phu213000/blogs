@@ -1,3 +1,3 @@
 <?php 
-  define('BASE_URL', 'http://localhost:84/blogs');
+  define('BASE_URL', 'http://localhost:84/pdo-mvc');
 ?>

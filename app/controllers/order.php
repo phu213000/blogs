@@ -9,7 +9,10 @@ class order extends Dcontroller{
  }
 
   public function order(){
-    echo 'This is a order page';
+    Session::checkSession();  
+    $this->load->view('header');
+    $this->load->view('order');
+    $this->load->view('footer');
   }
 }
 

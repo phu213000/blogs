@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="<?php echo BASE_URL?>/public/templates/css/style.css">
 
 
-  <link rel="stylesheet" href="<?php echo BASE_URL?>/">
+  <link rel="stylesheet" href="<?php echo BASE_URL?>/public/templates/admin/css/style.css">
 </head>
 
 <body>
