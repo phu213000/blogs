@@ -12,15 +12,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/solid.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/svg-with-js.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/v4-shims.min.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL?>/public/templates/css/style.css">
 
 
-  <link rel="stylesheet" href="<?php echo BASE_URL?>/public/">
+  <link rel="stylesheet" href="<?php echo BASE_URL?>/">
 </head>
 
 <body>
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="<?php echo BASE_URL?>/login/dashboard">Trang chủ</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,26 +29,51 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="urreink <span class=" sr-only">(current)</span></a>
+            <a class="nav-link" href="<?php echo BASE_URL?>/login/dashboard">Admin Cpanel</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Thông tin webiste</a>
           </li>
+
+          <!-- Nav-bar bai viet   -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
+              Bài viết
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Separated link</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">One more separated link</a>
+              <a class="dropdown-item" href="#">Thêm </a>
+              <a class="dropdown-item" href="#">Liệt kê </a>
+
+
             </div>
           </li>
+          <!-- Nav bar sản phẩm  -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sản phẩm
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Thêm </a>
+              <a class="dropdown-item" href="#">Liệt kê </a>
+            </div>
+          </li>
+
+
+          <!-- Đơn hàng -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Đơn hàng
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Thêm </a>
+              <a class="dropdown-item" href="<?php echo BASE_URL?>/order">Liệt kê </a>
+            </div>
+          </li>
+
+
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

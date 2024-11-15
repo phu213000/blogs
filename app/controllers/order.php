@@ -5,10 +5,12 @@ class order extends Dcontroller{
    parent::__construct();
   }
  public function index(){
-  return $this->orderlist();
+  return $this->order();
  }
 
-  public function 
+  public function order(){
+    echo 'This is a order page';
+  }
 }
 
 
