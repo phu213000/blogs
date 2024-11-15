@@ -19,8 +19,8 @@ class login extends Dcontroller {
   }
 
   public function authentication_login(){
-    echo $username = $_POST['username'];
-    echo $password = $_POST['password'];
+   
+    
    
   }
 }
