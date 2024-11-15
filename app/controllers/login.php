@@ -6,6 +6,7 @@ class login extends Dcontroller {
       $message = array();
       // $message = array();
       $data = array();
+      Session::checkSession();
       parent::__construct();
       // $this->load = new Load(); // Khởi tạo Load
   }
@@ -28,9 +29,9 @@ class login extends Dcontroller {
     
     Session::checkSession();
     // Session::checkSession();
-    $this->load->view('header');
+    $this->load->view('cpanel/header');
     $this->load->view('cpanel/dashboard');
-    $this->load->view('footer');
+    $this->load->view('cpanel/footer');
     
   }
   public function authentication_login(){
