@@ -27,7 +27,7 @@ class login extends Dcontroller {
 
   public function dashboard() {
     
-    Session::checkSession();
+    
     // Session::checkSession();
     $this->load->view('cpanel/header');
     $this->load->view('cpanel/dashboard');

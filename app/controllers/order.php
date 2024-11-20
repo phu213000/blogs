@@ -23,19 +23,7 @@ class order extends Dcontroller{
 
   }
 
-  public function delete_order(){
-    $this->load->view('cpanel/header');
-    $this->load->view('cpanel/menu');
-    $this->load->view('cpanel/order/delete_order');
-    $this->load->view('cpanel/footer');
-  }
   
-  public function insert_order(){
-    $this->load->view('cpanel/header');
-    $this->load->view('cpanel/menu');
-    $this->load->view('cpanel/order/insert_order');
-    $this->load->view('cpanel/footer');
-  }
 
 }
 
